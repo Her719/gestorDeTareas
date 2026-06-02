@@ -115,7 +115,10 @@ class TaskApp {
 
   private loadStoredTheme(): void {
     const config = StorageManager.getConfig();
-    this.themeToggle.applyTheme(config.theme);
+
+    const theme = config.theme || "dark";
+
+    this.themeToggle.applyTheme(theme);
   }
 
   private addTask(

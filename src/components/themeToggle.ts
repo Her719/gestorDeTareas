@@ -11,28 +11,25 @@ export class ThemeToggle {
 
   render(containerId: string): void {
     const container = document.getElementById(containerId);
+
     if (!container) return;
 
     container.innerHTML = `
-      <button class="btn-theme-toggle" id="theme-toggle" title="Toggle theme">
+      <button class="btn-theme-toggle" id="theme-toggle-btn" title="Toggle theme">
         <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="5"></circle>
-          <line x1="12" y1="1" x2="12" y2="3"></line>
-          <line x1="12" y1="21" x2="12" y2="23"></line>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-          <line x1="1" y1="12" x2="3" y2="12"></line>
-          <line x1="21" y1="12" x2="23" y2="12"></line>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
         </svg>
+
         <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
       </button>
     `;
 
-    const button = document.getElementById("theme-toggle") as HTMLButtonElement;
+    const button = document.getElementById(
+      "theme-toggle-btn",
+    ) as HTMLButtonElement;
+
     if (button) {
       button.addEventListener("click", () => this.toggleTheme());
     }
@@ -40,13 +37,70 @@ export class ThemeToggle {
 
   private toggleTheme(): void {
     this.currentTheme = this.currentTheme === "light" ? "dark" : "light";
+
     this.onThemeChange(this.currentTheme);
     this.applyTheme(this.currentTheme);
   }
 
   applyTheme(theme: Theme): void {
     const html = document.documentElement;
+
+    console.log("Applying theme:", theme);
+
     html.setAttribute("data-theme", theme);
+
     this.currentTheme = theme;
   }
 }
+// import { Theme } from "../types/index.js";
+
+// export class ThemeToggle {
+//   private currentTheme: Theme;
+//   private onThemeChange: (theme: Theme) => void;
+
+//   constructor(initialTheme: Theme, onThemeChange: (theme: Theme) => void) {
+//     this.currentTheme = initialTheme;
+//     this.onThemeChange = onThemeChange;
+//   }
+
+//   render(containerId: string): void {
+//     const container = document.getElementById(containerId);
+//     if (!container) return;
+
+//     container.innerHTML = `
+//       <button class="btn-theme-toggle" id="theme-toggle" title="Toggle theme">
+//         <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+//           <circle cx="12" cy="12" r="5"></circle>
+//           <line x1="12" y1="1" x2="12" y2="3"></line>
+//           <line x1="12" y1="21" x2="12" y2="23"></line>
+//           <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+//           <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+//           <line x1="1" y1="12" x2="3" y2="12"></line>
+//           <line x1="21" y1="12" x2="23" y2="12"></line>
+//           <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+//           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+//         </svg>
+//         <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+//           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+//         </svg>
+//       </button>
+//     `;
+
+//     const button = document.getElementById("theme-toggle") as HTMLButtonElement;
+//     if (button) {
+//       button.addEventListener("click", () => this.toggleTheme());
+//     }
+//   }
+
+//   private toggleTheme(): void {
+//     this.currentTheme = this.currentTheme === "light" ? "dark" : "light";
+//     this.onThemeChange(this.currentTheme);
+//     this.applyTheme(this.currentTheme);
+//   }
+
+//   applyTheme(theme: Theme): void {
+//     const html = document.documentElement;
+//     html.setAttribute("data-theme", theme);
+//     this.currentTheme = theme;
+//   }
+// }
