@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A modern, professional task management application"
+    />
+    <meta name="theme-color" content="#0d1117" />
+    <title>Task Manager - Modern Task Management</title>
+    <link rel="stylesheet" href="src/styles/main.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <div class="app-header">
+          <h1 class="app-title">📋 Task Manager</h1>
+          <div class="header-actions">
+            <button
+              id="add-task-btn"
+              class="btn-add-task"
+              title="Agregar tarea"
+            >
+              <span class="icon-plus">+</span>
+            </button>
+            <div id="language-toggle"></div>
+            <div id="theme-toggle"></div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <div id="stats-container"></div>
+        <div id="filters-container"></div>
+        <div id="task-list"></div>
+      </main>
+
+      <footer id="form-footer">
+        <div id="form-container"></div>
+      </footer>
+    </div>
+
+    <script type="module" src="dist/main.js"></script>
+  </body>
+</html>
